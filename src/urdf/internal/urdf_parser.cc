@@ -20,6 +20,7 @@ int URDFParser::parse(const tinyxml2::XMLElement* xml) {
     return result;
   }
   this->model_ = mp.get();
+  return 0;
 }
 
 int URDFParser::parse(const char* filename) {
@@ -39,8 +40,8 @@ int URDFParser::parse(const char* filename) {
       return -1;
     }
     VersionParser vp;
-    vp.parse(&doc);
-    this->parse(xml);
+    vp.parse(doc);
+    return this->parse(xml);
   }
   return 0;
 }

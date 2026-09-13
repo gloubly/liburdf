@@ -4,37 +4,38 @@ liburdf
 [![CMake](https://github.com/wissem01chiha/liburdf/actions/workflows/cmake.yml/badge.svg)](https://github.com/wissem01chiha/liburdf/actions/workflows/cmake.yml)
 [![Bazel](https://github.com/wissem01chiha/liburdf/actions/workflows/bazel.yml/badge.svg)](https://github.com/wissem01chiha/liburdf/actions/workflows/bazel.yml)
 [![CodeFactor](https://www.codefactor.io/repository/github/wissem01chiha/liburdf/badge)](https://www.codefactor.io/repository/github/wissem01chiha/liburdf)
+[![codecov](https://codecov.io/github/wissem01chiha/liburdf/branch/develop/graph/badge.svg?token=1Z4HUX83DE)](https://codecov.io/github/wissem01chiha/liburdf)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/wissem01chiha/liburdf/main.svg)](https://results.pre-commit.ci/latest/github/wissem01chiha/liburdf/main)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/7d15d9ad72f94c8883b5ea6dd9d40177)](https://app.codacy.com/gh/wissem01chiha/liburdf/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 ![GitHub License](https://img.shields.io/github/license/wissem01chiha/liburdf)
-
-**liburdf** is a modern, cross‑platform C++17 library for reading and writing [urdf](https://industrial-training-master.readthedocs.io/en/melodic/_source/session3/Intro-to-URDF.html) model files, designed to be lightweight, dependency‑free, with multiple language bindings
-
-Visit the [project](https://wissem01chiha.github.io/liburdf/) page for distribution tarballs and additional information.
 
 ## About
 
-liburdf is the successor of the tinyurdf project, a lightweight C++17 library for reading and processing urdf model files. I started working on tinyurdf back in 2024 with the goal of providing a replacement for traditional urdf manipulation tools, which rely heavily on the ros runtime, unix dependencies, or small python libraries.
+liburdf is a modern, cross‑platform C++17 library for reading and writing [urdf](https://industrial-training-master.readthedocs.io/en/melodic/_source/session3/Intro-to-URDF.html) model files. It is designed to be lightweight, dependency‑free, and available with multiple language bindings.
 
-During that time, I faced many issues with closed kinematics tree structures, which existing tools were not friendly with. Visualization and graphical debugging of such models was very painful, not to mention that generating them from mesh or [CAD](https://fileinfo.com/filetypes/cad) files required licensed software with many limitations.
+liburdf is the successor of the tinyurdf project, a lightweight C++17 library for reading and processing URDF model files. I started working on tinyurdf back in 2024 with the goal of providing a replacement for traditional URDF manipulation tools, which rely heavily on the ROS runtime, Unix dependencies, or small Python libraries. During that time, I faced many issues with closed kinematics tree structures, which existing tools did not handle well. Visualization and graphical debugging of such models was very painful, and generating them from mesh or [CAD](https://fileinfo.com/filetypes/cad) files often required licensed software with many limitations.
 
-The main goal of liburdf was to provide a free, cross‑platform, lightweight library with multiple language bindings to read, write, generate, and visualize kinematics trees, in a hierarchical xml based representation and convert them back to mesh files.
+The main goal of liburdf was to provide a free, cross‑platform, lightweight library with multiple language bindings to read, write, generate, and visualize kinematics trees in a hierarchical XML-based representation and convert them back to mesh files.
 
-however, this required a huge amount of work. I re‑uploaded the tinyurdf code under the same license terms with a few enhancements and fixes (hoping it will be useful for some people). The 3D visualization features, which relied heavily on [VTK](https://github.com/Kitware/VTK), has been removed. The focus shifted toward parsing and generation features.
+However, this required a huge amount of work. I re‑uploaded the tinyurdf code under the same license terms with a few enhancements and fixes, hoping it would be useful to some people. The 3D visualization features, which relied heavily on [VTK](https://github.com/Kitware/VTK), were removed. The focus shifted toward parsing and generation features.
 
-The project was originally derived from [urdf-api](https://docs.ros.org/en/diamondback/api/urdf/html/) and still follows the listed specifications of the urdf file format.
+The project was originally derived from [urdf-api](https://docs.ros.org/en/diamondback/api/urdf/html/) and still follows the listed specifications of the URDF file format. However, in upcoming releases, liburdf may introduce additional features, such as additional XML tags for material specifications, constraints, and others. These will be documented in detail. These features may not be fully compatible or supported by tools like [RViz](https://github.com/ros-visualization/rviz). liburdf < 1.x.x maintains support for a fallback compatibility with traditional URDF files used by ROS. For example, a file generated or written for ROS-based software can be parsed successfully with liburdf, and a file generated by liburdf can also be used in ROS.
 
-## Platform/Compiler Support
+## Platform Support
 
 | Platform | Compiler            | CMake Version |
 |----------|---------------------|---------------|
 | Windows  | MSVC 2017           | 3.22.1        |
-| Linux    | GCC 8               | Latest        |
+| Linux    | GCC                | Latest        |
+| MacOS    | AppleClang          | Latest        |
 
 Other platforms or compilers have not yet been tested. Please open an issue on [GitHub Issues](https://github.com/wissem01chiha/liburdf/issues) for any suspected bugs.
 
-## Quickstart - CMake
+## Quickstart Guide
 
-### Dependencies
+### CMake
+
+#### Dependencies
 
 liburdf currently depends on the following libraries:
 
@@ -58,10 +59,11 @@ These dependencies are automatically fetched and compiled during the build proce
 
 #### Configuration Options
 
-| Option                  | Description                          | Default |
+| Option                  | Description                           | Default |
 |--------------------------|--------------------------------------|---------|
 | LIBURDF_BUILD_SHARED     | Build shared library                 | OFF     |
 | LIBURDF_BUILD_SCRIPTS    | Enable building C++ scripts          | ON      |
+| LIBURDF_ENABLE_TESTING_COVERAGE | Enable Test Coverage          | OFF     |
 | LIBURDF_BUILD_TESTS      | Enable building C++ tests            | ON      |
 | LIBURDF_BUILD_PYTHON3    | Enable building Python3 binaries     | ON      |
 | LIBURDF_INSTALL          | Enable installation of liburdf       | ON      |
@@ -105,16 +107,16 @@ pip install --user .
 
 Note that Python bindings are not currently tested, many bugs exist. Use them at your own risk, or feel free to contribute.
 
-## Quickstart - Bazel
+### Bazel
 
 The official build system for liburdf is cmake. However, bazel will continue to be maintained for bazel‑based projects, primarily for integration purposes. Issues may still arise; please report them in the [issue tracker](https://github.com/wissem01chiha/liburdf/issues).
 
-### Prerequisites
+#### Prerequisites
 
 1. C++17 compatible compiler (GCC 7.1+, Clang 5.0+, MSVC 2017+)
 2. Bazel (version >=9.0.1)
 
-### Configuration Options
+#### Configuration Options
 
 From the top level of the project folder run
 
@@ -122,7 +124,7 @@ From the top level of the project folder run
 bazel build //...
 ```
 
-### Running Tests
+#### Running Tests
 
 Project tests are built by default with bazel, to run them:
 
@@ -130,99 +132,33 @@ Project tests are built by default with bazel, to run them:
 bazel test //...
 ```
 
-## Examples
+## API Documentation Reference
 
-At the moment, the available documentation does not provide extensive examples.
-
-- Additional test scripts, which may be useful, can be found in the [test](test/) folder.
-- Samples of model files can be found in the [urdf](examples/urdf/) directory. These files are mainly sourced from the [urdf_files_dataset](https://github.com/Daniella1/urdf_files_dataset).
-
-The examples assume that all installation instructions have been followed and that the library is successfully installed.
-
-#### Example 1: Parsing an URDF File
-
-```cpp
-#include "urdf/urdf.h"
-
-int main() {
-  // Create the parser
-  URDFParser parser;
-  // Parse the file
-  parser.parse("path/to/urdf/examples/urdf/example.urdf");
-  // Get the model
-  std::shared_ptr<Model> model_ = parser.get();
-  // Print the model info
-  std::cout << model_->toString();
-  return 0;
-}
-```
-This will print all model data to the standard output without any formatting or adjustments.
-
-Alternatively, when -DBUILD_SCRIPTS is enabled, you can parse the files from the command line as shown below:
-
-```bash
-./urdf_parse --file path/to/your/urdf_model.urdf
-```
-
-#### Example 2: Get Multijoint Model Data
-
-```cpp
-#include "tinyurdf/tinyurdf.h"
-
-int main() {
-  // Construct the parser
-  URDFParser parser;
-  // Call the parsing routine
-  parser.parse("path/to/file.urdf");
-  // Get the model
-  std::shared_ptr<Model> model_ = parser.get();
-  // Get the model name
-  std::string name = model_->getName();
-  // Get model joints
-  std::vector<std::shared_ptr<Joint>> joints_ = model_->getJoints();
-  // Get model links
-  std::vector<std::shared_ptr<Link>> links_ = model_->getLinks();
-  // Check whether the model is empty
-  bool status = model_->empty();
-  return 0;
-}
-```
-
-#### Python Interface Example
-
-Here is an example of the Python interface, which is similar to the C++ interface:
-
-```python
-from pytinyurdf import pyurdf_parser
-
-def main():
-    parser = pyurdf_parser.URDFParser()
-    urdf_file = "spot.urdf"
-    parser.parse(urdf_file)
-    model = parser.get()
-    print(model.getName())
-    print(model.__str__())
-
-if __name__ == "__main__":
-    main()
-```
-
-## API Reference
-
-Documentation is not yet published; API references and examples are in progress.
-
-## Pkgconfig
-
-Pkgconfig integration documentation is in progress.
+Check our [Wiki](https://github.com/wissem01chiha/liburdf/wiki) for detailed documentation and examples.
 
 ## FAQ
 
-Have a question? Want some tips? Feel free to open an issue on the [issue tracker](https://github.com/wissem01chiha/liburdf/issues).
+Have a question? Want some tips? Feel free to join the [discussions](https://github.com/wissem01chiha/liburdf/discussions) or open an issue on our [issue tracker](https://github.com/wissem01chiha/liburdf/issues).
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for project API changes.
+See [Changelog](CHANGELOG.md) file for project API changes.
 
-## Contributing
+## Support
 
-See [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md) for contribution guidelines.
+I'm not planning to actively update the project on a regular basis, but if any critical fixes are contributed, I'll certainly try to review and integrate them.
+
+For bugs, please [report an issue](https://github.com/wissem01chiha/liburdf/issues), submit a [pull request](https://github.com/wissem01chiha/liburdf/pulls) or catch me on [email](mailto:chihawissem08@gmail.com)
+
+Any contributions are greatly appreciated, see [Contributing](.github/CONTRIBUTING.md) for some contribution guidelines.
+
+## Thanks
+
+Many thanks to everyone who has contributed to this project, whether by reporting issues, submitting pull requests, or providing other forms of support. In particular:
+
+- [OmniLink Team](https://github.com/omnilink-tech)
+- [Shuyang Liu](https://github.com/kouge0510)
+
+## License
+
+Distributed under the [MIT License](), see [LICENSE](LICENSE.txt) file for more information

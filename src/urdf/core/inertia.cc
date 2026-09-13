@@ -84,3 +84,17 @@ void Inertia::setIyy(double iyy_) { iyy = iyy_; }
 void Inertia::setIyz(double iyz_) { iyz = iyz_; }
 
 void Inertia::setIzz(double izz_) { izz = izz_; }
+
+double Inertia::getMass() const { return mass; }
+
+double Inertia::getIxx() const { return ixx; }
+
+double Inertia::getIxy() const { return ixy; }
+
+double Inertia::getIxz() const { return ixz; }
+
+double Inertia::getIyy() const { return iyy; }
+
+double Inertia::getIyz() const { return iyz; }
+
+double Inertia::getIzz() const { return izz; }

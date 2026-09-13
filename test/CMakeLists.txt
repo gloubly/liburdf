@@ -18,6 +18,8 @@ set(urdf_test_sources
     model_test.cc
     model_parser_test.cc
     material_parser_test.cc
+    urdf_parser_test.cc
+    internal_graph_test.cc
 )
 
 set(urdf_test_assets
@@ -34,6 +36,8 @@ set(urdf_test_assets
     assets/spot.urdf
     assets/texture.txt
     assets/valid_path.txt
+    assets/spot_boston_dynamics.urdf
+    assets/onrobot_rg6_model.urdf
 )
 
 list(APPEND urdf_test_libraries urdf)

@@ -36,7 +36,19 @@ Joint::Joint(const Joint& rhs) {
   }
 }
 
-Joint::Joint(Joint&& rhs) noexcept {}
+Joint::Joint(Joint&& rhs) noexcept {
+  this->type = rhs.type;
+  this->axis = rhs.axis;
+  this->name = std::move(rhs.name);
+  this->child = std::move(rhs.child);
+  this->parent = std::move(rhs.parent);
+  this->transform = std::move(rhs.transform);
+  this->dynamics = std::move(rhs.dynamics);
+  this->limits = std::move(rhs.limits);
+  this->safety = std::move(rhs.safety);
+  this->calibration = std::move(rhs.calibration);
+  this->mimic = std::move(rhs.mimic);
+}
 
 void Joint::clear() {
   this->axis.setZero();
@@ -131,13 +143,13 @@ void Joint::setType(const char* c_) {
     this->type = Type::REVOLUTE;
   } else if (std::strcmp(c_, "fixed") == 0) {
     this->type = Type::FIXED;
-  } else if (std::strcmp(c_, "planner") == 0) {
+  } else if (std::strcmp(c_, "planar") == 0) {
     this->type = Type::PLANAR;
   } else if (std::strcmp(c_, "floating") == 0) {
     this->type = Type::FLOATING;
-  } else if (std::strcmp(c_, "continus") == 0) {
+  } else if (std::strcmp(c_, "continuous") == 0) {
     this->type = Type::CONTINUOUS;
-  } else if (std::strcmp(c_, "prismatric") == 0) {
+  } else if (std::strcmp(c_, "prismatic") == 0) {
     this->type = Type::PRISMATIC;
   } else if (std::strcmp(c_, "universal") == 0) {
     this->type = Type::UNIVERSAL;
@@ -153,6 +165,8 @@ void Joint::setAxis(double x, double y, double z) {
 }
 
 std::string Joint::getName() const { return this->name; }
+
+Joint::Type Joint::getType() const { return this->type; }
 
 void Joint::pushBackChild(const std::string lk) {
   if (!lk.empty()) {
