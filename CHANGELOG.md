@@ -3,7 +3,7 @@ Changelog
 
 #### CHANGES (06-09-2026)
 
-  - Initial liburdf version release
+  - Initial liburdf version 0.1.0 release
   
 #### CHANGES (22-07-2026)
   - Cleanup cmake scripts for modular plugin design 

@@ -19,6 +19,7 @@ set(urdf_test_sources
     model_parser_test.cc
     material_parser_test.cc
     urdf_parser_test.cc
+    internal_graph_test.cc
 )
 
 set(urdf_test_assets
