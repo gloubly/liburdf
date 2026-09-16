@@ -40,7 +40,7 @@ std::string BoxParser::toString() const {
 bool BoxParser::empty() const { return p_ == nullptr; }
 
 void BoxParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }

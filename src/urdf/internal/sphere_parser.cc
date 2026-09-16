@@ -41,7 +41,7 @@ std::string SphereParser::toString() const {
 bool SphereParser::empty() const { return p_ == nullptr; }
 
 void SphereParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }

@@ -44,12 +44,10 @@ bool LinkParser::isA(const char* name) const {
   return p_ ? p_->isA(name) : false;
 }
 
-bool LinkParser::empty() const {
-  return p_ ? p_->empty() : true;
-}
+bool LinkParser::empty() const { return p_ ? p_->empty() : true; }
 
 void LinkParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }

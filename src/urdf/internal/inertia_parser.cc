@@ -15,7 +15,7 @@ std::string InertiaParser::toString() const {
 bool InertiaParser::empty() const { return false; }
 
 void InertiaParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }

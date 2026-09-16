@@ -16,7 +16,7 @@ std::string ColorParser::toString() const {
 bool ColorParser::empty() const { return false; }
 
 void ColorParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }

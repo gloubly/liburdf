@@ -53,7 +53,7 @@ std::string MeshParser::toString() const {
 bool MeshParser::empty() const { return p_ == nullptr; }
 
 void MeshParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }

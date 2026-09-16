@@ -17,7 +17,7 @@ std::string PoseParser::toString() const {
 bool PoseParser::empty() const { return false; }
 
 void PoseParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }

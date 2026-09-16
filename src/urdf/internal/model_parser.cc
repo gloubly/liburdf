@@ -87,12 +87,10 @@ bool ModelParser::isA(const char* name) const {
   return p_ ? p_->isA(name) : false;
 }
 
-bool ModelParser::empty() const {
-  return p_ ? p_->empty() : true;
-}
+bool ModelParser::empty() const { return p_ ? p_->empty() : true; }
 
 void ModelParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }

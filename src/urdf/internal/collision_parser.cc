@@ -15,11 +15,10 @@ std::string CollisionParser::toString() const {
 bool CollisionParser::empty() const { return false; }
 
 void CollisionParser::clear() {
-  if(this->p_) {
+  if (this->p_) {
     this->p_->clear();
   }
 }
-
 
 const char* CollisionParser::getTypename() const { return "collision"; }
 

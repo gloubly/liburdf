@@ -39,7 +39,7 @@ bool Inertia::validate() const {
 }
 
 void Inertia::clear() {
-  if(origin) {
+  if (origin) {
     origin->clear();
   }
   mass = 0.0;

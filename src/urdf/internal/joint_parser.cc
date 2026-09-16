@@ -152,14 +152,12 @@ const char* JointParser::getTypename() const {
 std::shared_ptr<Joint> JointParser::get() { return p_; }
 
 void JointParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }
 
-bool JointParser::empty() const {
-  return p_ ? p_->empty() : true;
-}
+bool JointParser::empty() const { return p_ ? p_->empty() : true; }
 
 std::string JointParser::toString() const {
   std::ostringstream os;

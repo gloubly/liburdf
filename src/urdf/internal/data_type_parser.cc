@@ -17,7 +17,7 @@ bool DataTypeParser::isA(const char* name) const {
 bool DataTypeParser::empty() const { return !p_; }
 
 void DataTypeParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
     p_ = nullptr;
   }

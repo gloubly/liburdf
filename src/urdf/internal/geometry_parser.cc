@@ -68,12 +68,10 @@ const char* GeometryParser::getTypename() const {
   return p_ ? p_->getTypename() : "unknown";
 }
 
-bool GeometryParser::empty() const {
-  return p_ ? p_->empty() : true;
-}
+bool GeometryParser::empty() const { return p_ ? p_->empty() : true; }
 
 void GeometryParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }

@@ -44,7 +44,7 @@ std::string CylinderParser::toString() const {
 bool CylinderParser::empty() const { return p_ == nullptr; }
 
 void CylinderParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }

@@ -19,7 +19,7 @@ std::string MaterialParser::toString() const {
 bool MaterialParser::empty() const { return false; }
 
 void MaterialParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }

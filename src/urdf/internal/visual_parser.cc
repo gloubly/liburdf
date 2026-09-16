@@ -14,12 +14,10 @@ std::string VisualParser::toString() const {
   return os.str();
 }
 
-bool VisualParser::empty() const {
-  return p_ ? p_->empty() : true;
-}
+bool VisualParser::empty() const { return p_ ? p_->empty() : true; }
 
 void VisualParser::clear() {
-  if(p_) {
+  if (p_) {
     p_->clear();
   }
 }

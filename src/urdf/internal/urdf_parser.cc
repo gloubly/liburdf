@@ -67,7 +67,7 @@ bool URDFParser::empty() const {
 }
 
 void URDFParser::clear() {
-  if(this->model_) {
+  if (this->model_) {
     this->model_->clear();
   }
 }
